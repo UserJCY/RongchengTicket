@@ -2,9 +2,11 @@
 
 Screen-based color detection tool for snatching Chengdu Rongcheng FC match tickets.
 
-## How to Use
+## Quick Start
 
 ```bash
+git clone https://github.com/UserJCY/RongchengTicket.git
+cd RongchengTicket
 pip install -r requirements.txt
 python rongcheng_ticket.py
 ```
