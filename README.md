@@ -1,31 +1,32 @@
-# 成都蓉城抢票脚本
+# Rongcheng Ticket Bot
 
-基于屏幕颜色检测的自动化抢票工具，用于成都蓉城足球俱乐部比赛门票。
+Screen-based color detection tool for snatching Chengdu Rongcheng FC match tickets.
 
-## 使用方法
+## How to Use
 
 ```bash
-pip install pyautogui keyboard pillow
+pip install -r requirements.txt
 python rongcheng_ticket.py
 ```
 
-按提示依次完成：
-1. 输入 PushPlus Token（微信推送通知，可选）
-2. 鼠标移到「立即下单」按钮 → 按 Enter
-3. 框选绿色按钮出现的区域
-4. 触发一次弹窗 → 按 Enter → 点击绿色按钮取色
-5. 输入倒计时秒数
+Follow the prompts:
 
-## 工作原理
+1. Enter PushPlus token for WeChat notifications (optional)
+2. Move mouse over the purchase button and press Enter
+3. Drag to select the region where green buttons appear
+4. Trigger a popup on the website, press Enter, then click on the green button to sample its color
+5. Enter countdown delay in seconds
 
-- 循环点击「立即下单」按钮
-- 截图检测区域，扫描绿色像素
-- 首次检测到的绿色按钮记为基准（"确认" = 无票）
-- 后续绿色占比明显低于基准 → 判定为支付窗口 → 抢到票
-- PushPlus 微信推送 + 本地倒计时弹窗双重提醒
+## How It Works
 
-## 停止方式
+- Repeatedly clicks the purchase button
+- Takes screenshots of the selected region and scans for green pixels
+- First detected green button is saved as the baseline ("confirm" = sold out)
+- If a later green button has significantly lower green-ratio than baseline, it's the payment window
+- Sends PushPlus WeChat notification and shows a local countdown alert
 
-- **Ctrl+Shift+Q** — 随时强制终止
-- F8 — 循环间隙中停止
-- 鼠标移到屏幕左上角 — pyautogui failsafe
+## How to Stop
+
+- **Ctrl+Shift+Q** — Emergency kill switch (always works)
+- F8 — Stops between cycles
+- Move mouse to top-left corner — PyAutoGUI failsafe
